@@ -5,14 +5,48 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
    <link rel="stylesheet" href="assets/styles/style.css">
     
-    <title>Document</title>
+    <title>Chores</title>
 </head>
 <body ng-controller="choresController">
-    <div>
+    
         
+        <!--This addition test is the first way to check to see if Angular is working correclty.-->
+            <!--{{1+1}}-->
+        <!--This is the second way of testing your Angular App.-->
+            <!--{{test}}-->
         
-        
-    </div>
+ 
+  <input type ="text" ng-model="query" placeholder="Task"/>
+  <button ng-click="sortOrder='estTime'">Sort Asc</button>
+  <button ng-click="sortOrder='-estTime'">Sort Desc</button>
+  Current Filter: {{query}}
+  <br>
+  <br>
+  <div ng-repeat="chore in Chores | filter:query | orderBy:sortOrder">
+      <button ng-click="deleteChore($index)">Delete</button>
+      <ul>
+          <li>{{chore.task | uppercase}}</li>
+          <li>{{chore.dueDate | date}}, {{chore.responsibleParty}}, {{chore.estTime}}</li>
+      </ul>
+ </div>
+ 
+ <div>
+     Task:&nbsp;<input type="text" ng-model="newTask.task" placeholder="Task"/> {{Task}}
+     <br>
+     Due Date:&nbsp;<input type="text" ng-model="newTask.dueDate" placeholder="Due Date"/> {{DueDate}}
+     <br>
+     Responsible Party:&nbsp;<input type="text" ng-model="newTask.responsibleParty" placeholder="Responsible Party"/> {{Task}}
+     <br>
+     Est. Time:&nbsp;<input type="text" ng-model="newTask.estTime" placeholder="Est. Time"/> {{Task}}
+     <br>
+     <br>
+     <button ng-click="addNewChore()">Add Chore</button>
+     
+     
+     
+ </div>
+    
+    
     
     <!--JavaScript/Anglar is referenced last so it does everyhing in the head and the body first and JavaScript/
     Angular(ng) last.-->
